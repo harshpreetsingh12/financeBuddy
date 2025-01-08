@@ -209,7 +209,7 @@ export async function getTransaction(id:string) {
   return serializedAmount(transaction);
 }
 
-export async function updateTransaction(id, data) {
+export async function updateTransaction(id:string, data:any) {
   try {
     const { userId } = await auth();
     if (!userId) throw new Error("Unauthorized");
