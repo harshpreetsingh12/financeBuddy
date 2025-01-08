@@ -1,6 +1,12 @@
 import { Resend } from "resend";
 
-export async function sendEmail({ to, subject, react }) {
+type EmailParams = {
+  to: string;
+  subject: string;
+  react: any; 
+};
+
+export async function sendEmail({ to, subject, react }: EmailParams) {
   const resend = new Resend(process.env.RESEND_API_KEY || "");
 
   try {
