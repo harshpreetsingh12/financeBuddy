@@ -105,12 +105,14 @@ export async function bulkDeleteTransactions(transactionIds: string[]) {
 
     const accountBalanceChanges = transactions.reduce<AccountBalanceChanges>(
       (acc, transaction) => {
-        const change =
-          transaction.type === "EXPENSE" ?
-            transaction.amount
-          : -transaction.amount;
+        let change: Decimal | number =
+        transaction.type === "EXPENSE" ? transaction.amount : -transaction.amount;
 
-        acc[transaction.accountId] = (acc[transaction.accountId] || 0) +  change.toNumber();
+          if (change instanceof Decimal) {
+            change = change.toNumber();  // Convert Decimal to number
+          }
+
+        acc[transaction.accountId] = (acc[transaction.accountId] || 0) +  change;
         return acc;
       },
       {},
