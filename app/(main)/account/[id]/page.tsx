@@ -13,7 +13,8 @@ type AccountPageProps = {
   params: AccountPageParamType;
 };
 
-const AccountPage: React.FC<AccountPageProps> = async ({ params }) => {
+
+const AccountPage= async ({ params }:AccountPageProps) => {
   const accountData = await getAccountWithTransaction(params.id);
 
   if (!accountData) {
