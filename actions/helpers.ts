@@ -1,7 +1,7 @@
 import { db } from "@/lib/prisma";
 import { auth } from "@clerk/nextjs/server";
 
-export const serializeTransation = (object) => {
+export const serializeTransation = (object: Record<string, any>)  => {
   const serialized = { ...object };
   if (object.balance) {
     serialized.balance = object.balance.toNumber();
@@ -33,7 +33,7 @@ export const isUserExist = async () => {
   }
 };
 
-export const serializedAmount = (object) => ({
+export const serializedAmount = (object: Record<string, any>)  => ({
   ...object,
   amount: object.amount.toNumber(),
 });
