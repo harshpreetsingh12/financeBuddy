@@ -10,12 +10,12 @@ type AccountPageParamType = {
 };
 
 type AccountPageProps = {
-  params: AccountPageParamType;
+  params: Promise<AccountPageParamType>;
 };
 
-
 const AccountPage= async ({ params }:AccountPageProps) => {
-  const accountData = await getAccountWithTransaction(params.id);
+  const resolved= await params
+  const accountData = await getAccountWithTransaction(resolved.id);
 
   if (!accountData) {
     notFound();
