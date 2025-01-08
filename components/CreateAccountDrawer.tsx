@@ -66,7 +66,7 @@ const CreateAccountDrawer = ({ children }: RootComp) => {
         }
     },[error])
 
-    const onSubmit: SubmitHandler<DataInterface>= async (data)=>{
+    const onSubmit: SubmitHandler<DataInterface>= async (data:any)=>{
         await createAccountFunction(data)
     }
 

@@ -66,7 +66,7 @@ const BudgetProgress: React.FC<BudgetProgressProps> = ({
 
   useEffect(() => {
     if (error) {
-      toast.error(error.message || "Failed to update budget");
+      toast.error("Failed to update budget");
     }
   }, [error]);
 

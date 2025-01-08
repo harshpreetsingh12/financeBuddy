@@ -279,6 +279,10 @@ export async function updateTransaction(id:string, data:any) {
 
     return { success: true, data: serializedAmount(transaction) };
   } catch (error) {
-    throw new Error(error.message + "__Error in updateTransaction");
+    if (error instanceof Error) {
+      throw new Error(error.message);
+  } else {
+      throw new Error("An unknown error occurred");
+  }
   }
 }
