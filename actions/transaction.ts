@@ -187,7 +187,7 @@ export async function scanReceipt(file: File): Promise<ScanReceiptReturn> {
   }
 }
 
-export async function getTransaction(id) {
+export async function getTransaction(id:string) {
   const { userId } = await auth();
   if (!userId) throw new Error("Unauthorized");
 
