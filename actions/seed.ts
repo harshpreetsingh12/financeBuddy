@@ -56,7 +56,7 @@ interface Transaction {
   id: string;
   category: string;
   amount: number;
-  date: string;
+  date: Date;
 }
 
 export async function seedTransactions() {
