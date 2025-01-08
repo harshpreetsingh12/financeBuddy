@@ -57,6 +57,13 @@ interface Transaction {
   category: string;
   amount: number;
   date: Date;
+  type:"INCOME" | "EXPENSE",
+  description:string,
+  status:  "PENDING" | "FAILED" | "COMPLETED",
+  userId:string,
+  accountId:string,
+  createdAt: Date,
+  updatedAt: Date,
 }
 
 export async function seedTransactions() {
