@@ -10,6 +10,13 @@ import { auth } from "@clerk/nextjs/server";
 
 const genAi = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || "");
 
+enum RecurringInterval {
+  DAILY = 'DAILY',
+  WEEKLY = 'WEEKLY',
+  MONTHLY = 'MONTHLY',
+  YEARLY = 'YEARLY',
+}
+
 type Transaction = {
   type: "EXPENSE" | "INCOME";
   accountId: string;
@@ -18,7 +25,7 @@ type Transaction = {
   amount: number;
   date: Date;
   isRecurring: boolean;
-  recurringInterval: string;
+  recurringInterval: RecurringInterval;
 };
 
 export async function createTransaction(data: Transaction) {
