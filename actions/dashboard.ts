@@ -6,7 +6,7 @@ import { isUserExist, serializeTransation } from "./helpers";
 
 type DataInterface = {
     name: string
-    type: 'CHECKING' | 'SAVINGS' | 'CREDIT'
+    type: 'CURRENT' | 'SAVINGS'
     balance: number
     isDefault:boolean
 };
