@@ -3,6 +3,7 @@
 import { db } from "@/lib/prisma";
 import { isUserExist } from "./helpers";
 import { revalidatePath } from "next/cache";
+import { Decimal } from "decimal.js"; 
 
 const serializeTransation = (object: any) => {
   const serialized = { ...object };
@@ -86,7 +87,7 @@ type Transaction = {
   accountId: string;
   id: string;
   category: string;
-  amount: number;
+  amount: Decimal;
   date: string;
 };
 
