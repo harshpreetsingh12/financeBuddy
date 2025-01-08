@@ -110,7 +110,7 @@ export async function bulkDeleteTransactions(transactionIds: string[]) {
             transaction.amount
           : -transaction.amount;
 
-        acc[transaction.accountId] = (acc[transaction.accountId] || 0) + change;
+        acc[transaction.accountId] = (acc[transaction.accountId] || 0) +  change.toNumber();
         return acc;
       },
       {},
