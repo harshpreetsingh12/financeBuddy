@@ -88,7 +88,7 @@ type Transaction = {
   id: string;
   category: string;
   amount: Decimal;
-  date: string;
+  date: Date;
 };
 
 export async function bulkDeleteTransactions(transactionIds: string[]) {
