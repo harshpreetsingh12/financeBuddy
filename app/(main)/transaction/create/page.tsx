@@ -1,16 +1,23 @@
 import { getUserAccounts } from "@/actions/dashboard";
 import { defaultCategories } from "@/data/categories";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import AddTransactionForm from "../_components/AddTransactionForm";
 import { getTransaction } from "@/actions/transaction";
 
-const AddTransactionPage = async ({ searchParams }) => {
+
+type TXParamType = {
+  id: string;
+};
+
+type TransactionCreateeProps = {
+  searchParams: Promise<TXParamType>;
+};
+
+const AddTransactionPage = async ({ searchParams }:TransactionCreateeProps) => {
+  const resolved= await searchParams
+  const editId = resolved.edit;
   const accounts = await getUserAccounts();
-
-  const editId = searchParams?.edit;
-
-  // console.log(editId);
-
+  
   let initialData = null;
   if (editId) {
     const transaction = await getTransaction(editId);

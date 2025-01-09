@@ -61,8 +61,8 @@ type Account= {
 }
   
 type DashboardOverViewProps = {
-    transactions: Transaction[];
-    accounts: Account[];
+  accounts: Account[];
+  transactions: Transaction[];
 };
 
 export function DashboardOverview({ accounts, transactions }:DashboardOverViewProps) {
