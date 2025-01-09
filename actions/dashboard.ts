@@ -16,7 +16,7 @@ export async function createAccount(data :DataInterface){
     try{
         const user = await isUserExist();
 
-        if(!user) throw new Error("User Not found");
+        if(!user) console.log("user not found");
 
         const {balance} = data
 
@@ -67,7 +67,7 @@ export async function createAccount(data :DataInterface){
 export async function getUserAccounts() {
     try{
         const user = await isUserExist();
-        if(!user) throw new Error("User Not found");
+        if(!user) console.log("user not found");
 
         const accounts = await db.account.findMany({
             where:{ userId: user.id },
@@ -96,7 +96,7 @@ export async function getUserAccounts() {
 
 export async function getDashboardData() {
     const user = await isUserExist();
-    if(!user) throw new Error("User Not found");
+    if(!user) console.log("user not found");
     
     // Get all user transactions
     const transactions = await db.transaction.findMany({

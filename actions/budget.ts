@@ -17,7 +17,7 @@ export async function getCurrentBudget(accountId: AccountId) {
     });
 
     if (!user) {
-      throw new Error("User not found");
+      console.log("user not found");
     }
 
     const budget = await db.budget.findFirst({
@@ -75,7 +75,7 @@ export async function updateBudget(amount: number) {
       where: { clerkUserId: userId },
     });
 
-    if (!user) throw new Error("User not found");
+    if (!user) console.log("user not found");
 
     // Update or create budget
     const budget = await db.budget.upsert({

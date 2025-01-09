@@ -31,7 +31,7 @@ type Transaction = {
 export async function createTransaction(data: Transaction) {
   try {
     const user = await isUserExist();
-    if (!user) throw new Error("User Not found");
+    if (!user) console.log("user not found");
 
     const req = await request();
 
@@ -61,7 +61,7 @@ export async function createTransaction(data: Transaction) {
       where: { id: accountId, userId: user.id },
     });
 
-    if (!account) throw new Error("User Not found");
+    if (!account) console.log("user not found");
 
     const balanceChange = type === "EXPENSE" ? -amount : amount;
     const newBalance = account.balance.toNumber() + balanceChange;
@@ -195,7 +195,7 @@ export async function getTransaction(id:string) {
     where: { clerkUserId: userId },
   });
 
-  if (!user) throw new Error("User not found");
+  if (!user) console.log("user not found");
 
   const transaction = await db.transaction.findUnique({
     where: {
@@ -218,7 +218,7 @@ export async function updateTransaction(id:string, data:any) {
       where: { clerkUserId: userId },
     });
 
-    if (!user) throw new Error("User not found");
+    if (!user) console.log("user not found");
 
     // Get original transaction to calculate balance change
     const originalTransaction = await db.transaction.findUnique({

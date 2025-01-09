@@ -22,7 +22,7 @@ export async function updateDefaultAccount(accountId: string) {
   try {
     const user = await isUserExist();
 
-    if (!user) throw new Error("User Not found");
+    if (!user) console.log("user not found");
 
     await db.account.updateMany({
       where: { userId: user.id, isDefault: true },
@@ -52,7 +52,7 @@ export async function updateDefaultAccount(accountId: string) {
 export async function getAccountWithTransaction(accountId: string) {
   try {
     const user = await isUserExist();
-    if (!user) throw new Error("User Not found");
+    if (!user) console.log("user not found");
 
     const account = await db.account.findUnique({
       where: { id: accountId, userId: user.id },
@@ -94,7 +94,7 @@ type Transaction = {
 export async function bulkDeleteTransactions(transactionIds: string[]) {
   try {
     const user = await isUserExist();
-    if (!user) throw new Error("User Not found");
+    if (!user) console.log("user not found");
 
     const transactions: Transaction[] = await db.transaction.findMany({
       where: {
