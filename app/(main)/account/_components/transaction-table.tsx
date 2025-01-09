@@ -73,7 +73,7 @@ const TransactionTable = ({ transactions }:TransactionPageProps) => {
   const [selectedIds, setSelectedIds] =useState<string[]>([])
   const [sortConfig, setSortConfig] = useState<SortConfig>({
     field:'date',
-    direction:'desc'
+    direction:'asc'
   })
 
   const [searchTerm, setSearchTerm] = useState<string>('')
