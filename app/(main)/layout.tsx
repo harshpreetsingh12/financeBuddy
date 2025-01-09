@@ -6,7 +6,7 @@ type RootLayoutProps = {
 
 const MainLayout = ({ children }: RootLayoutProps)  => {
   return (
-    <div className='container mx-auto my-32'>
+    <div className='container mx-auto my-32 lg:px-12'>
       {children}
     </div>
   )
