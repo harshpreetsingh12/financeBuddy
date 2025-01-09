@@ -105,7 +105,7 @@ export async function seedTransactions() {
     }
 
     // Insert transactions in batches and update account balance
-    await db.$transaction(async (tx) => {
+    await db.$transaction(async (tx:any) => {
       // Clear existing transactions
       await tx.transaction.deleteMany({
         where: { accountId: ACCOUNT_ID },

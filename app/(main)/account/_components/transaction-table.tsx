@@ -1,3 +1,4 @@
+// @ts-ignore
 "use client";
 
 import { bulkDeleteTransactions } from "@/actions/accounts";
@@ -35,7 +36,7 @@ type Transaction = {
   category: string;
   receiptUrl: string | null;
   isRecurring: boolean;
-  recurringInterval: string | null;
+  recurringInterval: RecurringInterval | null;
   nextRecurringDate: string | null;
   lastProcessed: string | null;
   status: "COMPLETED" | "PENDING"; 
@@ -50,12 +51,15 @@ type TransactionPageProps = {
 };
 
 
-const RECURRING_INTERVALS= {
-  DAILY:"Daily",
-  WEEKLY:'Weekly',
-  MONTHLY:'Monthly',
-  YEARLY:"Yearly"
-}
+const RECURRING_INTERVALS = {
+  DAILY: "Daily",
+  WEEKLY: "Weekly",
+  MONTHLY: "Monthly",
+  YEARLY: "Yearly",
+} as const;
+
+// Type for the keys of RECURRING_INTERVALS
+type RecurringInterval = keyof typeof RECURRING_INTERVALS;
 
 type SortConfig = {
   field: string;
@@ -161,14 +165,14 @@ const TransactionTable = ({ transactions }:TransactionPageProps) => {
   },[filterAndSortTransations, currentPage])
 
   const handleSort = (field: string) => {
-    setSortConfig((current) => ({
+    setSortConfig((current:any) => ({
       field,
       direction: current.field === field && current.direction === "asc" ? "desc" : "asc",
     }));
   };
 
   const handleSelect = (id: string) => {
-    setSelectedIds(current=>
+    setSelectedIds((current: string[])=>
        current.includes(id) 
        ? current.filter(items=> items!==id) 
        : [...current, id]
@@ -176,10 +180,10 @@ const TransactionTable = ({ transactions }:TransactionPageProps) => {
   };
 
   const handleSelectAll = () => {
-    setSelectedIds(current=>
+    setSelectedIds((current: string[])=>
       current.length === filterAndSortTransations.length 
       ? []
-      : filterAndSortTransations.map((trans)=>trans.id)
+      : filterAndSortTransations.map((trans:any)=>trans.id)
    )
   };
   
@@ -372,10 +376,9 @@ const TransactionTable = ({ transactions }:TransactionPageProps) => {
                                 >
                                   <RefreshCw className="h-3 w-3" />
                                   {
-                                    RECURRING_INTERVALS[
-                                      transaction.recurringInterval
-                                    ]
+                                     transaction.recurringInterval && RECURRING_INTERVALS[transaction.recurringInterval]
                                   }
+
                                 </Badge>
                               </TooltipTrigger>
                               <TooltipContent>

@@ -11,7 +11,7 @@ import { DashboardOverview } from "./_components/DashboardOverview";
 const DashboardPage = async () => {
   const accounts = await getUserAccounts();
 
-  const defaultAccount = accounts?.find((account) => account.isDefault);
+  const defaultAccount = accounts?.find((account:any) => account.isDefault);
 
   let budgetData = null;
   if (defaultAccount) {

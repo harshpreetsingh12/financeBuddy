@@ -43,11 +43,15 @@ type ScanReceiptReturn = {
   merchantName: string;
 };
 
+type InitialDataType = {
+  accounts: AccountType[];
+};
+
 type TransactionPageProps = {
   accounts: AccountType[];
   categories: string[];
-  editMode: string;
-  initialData: null;
+  editMode: boolean;
+  initialData: any;
 };
 
 const AddTransactionForm = ({

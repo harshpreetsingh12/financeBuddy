@@ -22,7 +22,7 @@ type AccountCardProps = {
     account: AccountType;
 };
 
-const AccountCard: React.FC<AccountCardProps> = ({ account }) => {
+const AccountCard: React.FC<AccountCardProps> = ({ account }:AccountCardProps) => {
     const {name, type, balance, id, isDefault}= account
 
     const { 

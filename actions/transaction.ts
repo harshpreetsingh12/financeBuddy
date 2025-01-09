@@ -66,7 +66,7 @@ export async function createTransaction(data: Transaction) {
     const balanceChange = type === "EXPENSE" ? -amount : amount;
     const newBalance = account.balance.toNumber() + balanceChange;
 
-    const transaction = await db.$transaction(async (tx) => {
+    const transaction = await db.$transaction(async (tx:any) => {
       const newTransaction = await tx.transaction.create({
         data: {
           ...data,

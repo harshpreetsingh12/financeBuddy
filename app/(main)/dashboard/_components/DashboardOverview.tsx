@@ -77,7 +77,7 @@ export function DashboardOverview({ accounts, transactions }:DashboardOverViewPr
 
   // Get recent transactions (last 5)
   const recentTransactions = accountTransactions
-    .sort((a, b) => new Date(b.date) - new Date(a.date))
+    .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
     .slice(0, 5);
 
   // Calculate expense breakdown for current month

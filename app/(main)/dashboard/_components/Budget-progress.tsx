@@ -29,7 +29,7 @@ interface BudgetProgressProps {
 const BudgetProgress: React.FC<BudgetProgressProps> = ({
   initialBudget,
   currentExpenses,
-}) => {
+}:BudgetProgressProps) => {
   const [isEditing, setIsEditing] = useState(false);
   const [newBudget, setNewBudget] = useState<string>(
     initialBudget?.amount.toString() || "",

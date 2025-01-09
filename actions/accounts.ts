@@ -120,7 +120,7 @@ export async function bulkDeleteTransactions(transactionIds: string[]) {
 
     //Delete transactions and update balances in a transaction
 
-    await db.$transaction(async (tx) => {
+    await db.$transaction(async (tx:any) => {
       //delete transaction
 
       await tx.transaction.deleteMany({
