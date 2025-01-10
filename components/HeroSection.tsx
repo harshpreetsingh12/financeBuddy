@@ -38,12 +38,12 @@ const HeroSection = () => {
           your spending with real-time insights.
         </p>
         <div className="flex justify-center space-x-4">
-          <Link href="/dashboard">
+          <Link href="/sign-in">
             <Button size="lg" className="px-8">
               Get Started
             </Button>
           </Link>
-          <Link href="https://www.google.com">
+          <Link href="https://youtu.be/LrtjA2H46mI">
             <Button size="lg" className="px-8" variant="outline">
               Watch Demo
             </Button>

@@ -79,7 +79,7 @@ export default function Home() {
             Join thousands of users who are already managing their finances
             smarter with Welth
           </p>
-          <Link href="/dashboard">
+          <Link href="/sign-in">
             <Button
               size="lg"
               className="bg-white text-blue-600 hover:bg-blue-50 animate-bounce"
